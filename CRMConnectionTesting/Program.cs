@@ -34,8 +34,8 @@ namespace CRMConnectionTesting
 
         public static void Main( string[] args )
         {
+            // TODO: Switch the username, password, and service to properties and have the ConnectToMSCRM method take no parameters.
             OrganizationServiceConnection MediabardCRM = new OrganizationServiceConnection();
-
             MediabardCRM.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
             if( MediabardCRM.Connected )
