@@ -40,7 +40,7 @@ namespace CRMConnectionTesting
             MediabardCRMOrganizationService.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
             if( MediabardCRMOrganizationService.Connected )
-                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService );
+                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService.Service );
 
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection();
             MediabardCRMServiceClient.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_URL );
