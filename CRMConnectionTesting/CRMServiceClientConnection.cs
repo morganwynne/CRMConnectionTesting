@@ -21,6 +21,20 @@ namespace CRMConnectionTesting
         public string RedirectUri { get; set; } = "app://58145B91-0C36-4500-8554-080854F2AC97";
         public string LoginPrompt { get; set; } = "Auto";
 
+        public string ConnectionString
+        {
+            get
+            {
+                return
+                    "AuthType=" + AuthType + ";" +
+                    "Username=" + UserName + ";" +
+                    "Url=" + Url + ";" +
+                    "AppId=" + AppId + ";" +
+                    "RedirectUri=" + RedirectUri + ";" +
+                    "LoginPrompt=" + LoginPrompt + ";";
+            }
+        }
+
         public bool Connected {
             get
             {
@@ -37,9 +51,7 @@ namespace CRMConnectionTesting
         public void ConnectToMSCRM()
         {
             // Could not get it to grab the connection string in the app.config file
-            string connectionString = "AuthType=" + AuthType + ";Username=" + UserName + ";Url=" + Url + ";AppId=" + AppId + ";RedirectUri=" + RedirectUri + ";LoginPrompt=" + LoginPrompt;
-
-            Service = (IOrganizationService)new CrmServiceClient( connectionString );
+            Service = (IOrganizationService)new CrmServiceClient( this.ConnectionString );
         }
     }
 }
