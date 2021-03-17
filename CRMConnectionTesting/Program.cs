@@ -32,14 +32,12 @@ namespace CRMConnectionTesting
 
         static void Main(string[] args)
         {
-            Console.WriteLine("hello, World!");
-
             ConnectToMSCRM( "testuser@mediabard.onmicrosoft.com", "Thisis1userfortesting", "https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc" );
 
             Guid userid = ( (WhoAmIResponse)_service.Execute( new WhoAmIRequest() ) ).UserId;
             if( userid != Guid.Empty )
             {
-                Console.WriteLine( "Connection Established Successfully" );
+                Console.WriteLine( "Connection Established Successfully\n" );
 
                 var accountsQuery = new QueryExpression( "account" )
                 {
