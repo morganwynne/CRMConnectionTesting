@@ -19,14 +19,7 @@ namespace CRMConnectionTesting
             organizationServiceConnection.ConnectToMSCRM();
 
             if( organizationServiceConnection.Connected )
-            {
                 Console.WriteLine( "Creation Organization Service Successful" );
-                Console.WriteLine( "Testing Organization Service Retrieve" );
-                if( CRMConnectionTests.TestOrganizationServiceRetrieve( organizationServiceConnection.Service ) )
-                    Console.WriteLine( "Testing Organization Service Retrieve Successful" );
-                else
-                    Console.WriteLine( "Testing Organization Service Retrieve Failure" );
-            }
             else
                 Console.WriteLine( "Creating Organization Service Failure" );
         }
@@ -40,22 +33,19 @@ namespace CRMConnectionTesting
             cRMServiceClientConnection.ConnectToMSCRM();
 
             if( cRMServiceClientConnection.Connected )
-            {
                 Console.WriteLine( "Creating Service Client Connection Successful" );
-                Console.WriteLine( "Testing Service Client Retrieve" );
-                if( CRMConnectionTests.TestOrganizationServiceRetrieve( cRMServiceClientConnection.Service ) )
-                    Console.WriteLine( "Testing Service Client Retrieve Successful" );
-                else
-                    Console.WriteLine( "Testing Service Client Retrieve Failure" );
-            }
             else
                 Console.WriteLine( "Creating Service Client Connection Failure" );
         }
 
-        public static bool TestOrganizationServiceRetrieve( IOrganizationService organizationService )
+        /// <summary>
+        /// Tests retrieving data from a connected IOrganizationService object
+        /// </summary>
+        public static void TestOrganizationServiceRetrieve( IOrganizationService organizationService )
         {
             try
             {
+                Console.WriteLine( "Testing Service Client Retrieve" );
                 var accountsQuery = new QueryExpression( "account" )
                 {
                     ColumnSet = new ColumnSet( true )
@@ -68,14 +58,14 @@ namespace CRMConnectionTesting
                 {
                     Console.WriteLine( account.Attributes["name"] + " " + account.Attributes["emailaddress1"] );
                 }
+
+                Console.WriteLine( "Testing Service Client Retrieve Successful" );
             }
             catch( Exception ex )
             {
-                Console.Write( ex.Message );
-                return false;
+                Console.WriteLine( ex.Message );
+                Console.WriteLine( "Creating Service Client Connection Failure" );
             }
-
-            return true;
         }
     }
 }

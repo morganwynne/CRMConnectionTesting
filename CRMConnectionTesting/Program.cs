@@ -44,6 +44,7 @@ namespace CRMConnectionTesting
                 SoapOrgServiceUri = DynamicsCRM_OrganizationService
             };
             CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService );
+            CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMOrganizationService.Service );
 
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
             {
@@ -51,6 +52,8 @@ namespace CRMConnectionTesting
                 Url = DynamicsCRM_Mediabard_URL
             };
             CRMConnectionTests.TestCRMServiceClientConnection( MediabardCRMServiceClient );
+            CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMServiceClient.Service );
+
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
