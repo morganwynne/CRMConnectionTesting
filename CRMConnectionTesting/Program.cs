@@ -35,19 +35,41 @@ namespace CRMConnectionTesting
 
         public static void Main( string[] args )
         {
+            // TODO: Most of these could be replaced by unit testing, I'm sure of it.
+
+            Console.WriteLine( "Creating Organization Service Connection" );
             // TODO: Switch the username, password, and service to properties and have the ConnectToMSCRM method take no parameters.
             OrganizationServiceConnection MediabardCRMOrganizationService = new OrganizationServiceConnection();
             MediabardCRMOrganizationService.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
             if( MediabardCRMOrganizationService.Connected )
-                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService.Service );
+            {
+                Console.WriteLine( "Creation Organization Service Successful" );
+                Console.WriteLine( "Testing Organization Service Retrieve" );
+                if( CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService.Service ) )
+                    Console.WriteLine( "Testing Organization Service Retrieve Successful" );
+                else
+                    Console.WriteLine( "Testing Organization Service Retrieve Failure" );
+            }
+            else
+                Console.WriteLine( "Creating Organization Service Failure" );
 
+            Console.WriteLine( "Creating Service Client Connection" );
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection();
             MediabardCRMServiceClient.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_URL );
 
             if( MediabardCRMServiceClient.Connected )
-                Console.WriteLine( "CRMServiceClient Successfully Connected" );
-
+            {
+                Console.WriteLine( "Creating Service Client Connection Successful" );
+                Console.WriteLine( "Testing Service Client Retrieve" );
+                if( CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMServiceClient.Service ) )
+                    Console.WriteLine( "Testing Service Client Retrieve Successful" );
+                else
+                    Console.WriteLine( "Testing Service Client Retrieve Failure" );
+            }
+            else
+                Console.WriteLine( "Creating Service Client Connection Failure" );
+                
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
                 while( !Console.KeyAvailable )
