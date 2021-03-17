@@ -14,6 +14,8 @@ namespace CRMConnectionTesting
     {
         public IOrganizationService Service { get; private set; }
 
+        public CrmServiceClient ServiceClient { get; private set; }
+
         public string UserName { get; set; }
         public string Url { get; set; }
         public string AuthType { get; set; } = "OAuth";
@@ -51,7 +53,8 @@ namespace CRMConnectionTesting
         public void ConnectToMSCRM()
         {
             // Could not get it to grab the connection string in the app.config file
-            Service = (IOrganizationService)new CrmServiceClient( this.ConnectionString );
+            ServiceClient = new CrmServiceClient( this.ConnectionString );
+            Service = (IOrganizationService)ServiceClient;
         }
     }
 }
