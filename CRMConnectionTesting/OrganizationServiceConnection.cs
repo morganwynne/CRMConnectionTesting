@@ -15,6 +15,10 @@ namespace CRMConnectionTesting
     {
         public IOrganizationService Service { get; private set; }
 
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string SoapOrgServiceUri { get; set; }
+
         public bool Connected
         {
             get
@@ -34,7 +38,7 @@ namespace CRMConnectionTesting
         /// <summary>
         /// Connect the Organization Service to the corresponding organization using the given username and password.
         /// </summary>
-        public void ConnectToMSCRM( string UserName, string Password, string SoapOrgServiceUri )
+        public void ConnectToMSCRM()
         {
             try
             {

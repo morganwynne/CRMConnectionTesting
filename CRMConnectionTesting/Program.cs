@@ -38,9 +38,13 @@ namespace CRMConnectionTesting
             // TODO: Most of these could be replaced by unit testing, I'm sure of it.
 
             Console.WriteLine( "Creating Organization Service Connection" );
-            // TODO: Switch the username, password, and service to properties and have the ConnectToMSCRM method take no parameters.
-            OrganizationServiceConnection MediabardCRMOrganizationService = new OrganizationServiceConnection();
-            MediabardCRMOrganizationService.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
+            OrganizationServiceConnection MediabardCRMOrganizationService = new OrganizationServiceConnection()
+            {
+                UserName = DynamicsCRM_Mediabard_TestUserUsername,
+                Password = DynamicsCRM_Mediabard_TestUserPassword,
+                SoapOrgServiceUri = DynamicsCRM_OrganizationService
+            };
+            MediabardCRMOrganizationService.ConnectToMSCRM();
 
             if( MediabardCRMOrganizationService.Connected )
             {
@@ -55,8 +59,12 @@ namespace CRMConnectionTesting
                 Console.WriteLine( "Creating Organization Service Failure" );
 
             Console.WriteLine( "Creating Service Client Connection" );
-            CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection();
-            MediabardCRMServiceClient.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_URL );
+            CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
+            {
+                UserName = DynamicsCRM_Mediabard_TestUserUsername,
+                Url = DynamicsCRM_Mediabard_URL
+            };
+            MediabardCRMServiceClient.ConnectToMSCRM();
 
             if( MediabardCRMServiceClient.Connected )
             {

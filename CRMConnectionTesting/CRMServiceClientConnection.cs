@@ -14,6 +14,13 @@ namespace CRMConnectionTesting
     {
         public IOrganizationService Service { get; private set; }
 
+        public string UserName { get; set; }
+        public string Url { get; set; }
+        public string AuthType { get; set; } = "OAuth";
+        public string AppId { get; set; } = "51f81489-12ee-4a9e-aaae-a2591f45987d";
+        public string RedirectUri { get; set; } = "app://58145B91-0C36-4500-8554-080854F2AC97";
+        public string LoginPrompt { get; set; } = "Auto";
+
         public bool Connected {
             get
             {
@@ -27,10 +34,10 @@ namespace CRMConnectionTesting
 
         }
 
-        public void ConnectToMSCRM( string userName, string url, string authType = "OAuth", string appId = "51f81489-12ee-4a9e-aaae-a2591f45987d", string redirectUri = "app://58145B91-0C36-4500-8554-080854F2AC97", string loginPrompt = "Auto" )
+        public void ConnectToMSCRM()
         {
             // Could not get it to grab the connection string in the app.config file
-            string connectionString = "AuthType=" + authType + ";Username=" + userName + ";Url=" + url + ";AppId=" + appId + ";RedirectUri=" + redirectUri + ";LoginPrompt=" + loginPrompt;
+            string connectionString = "AuthType=" + AuthType + ";Username=" + UserName + ";Url=" + Url + ";AppId=" + AppId + ";RedirectUri=" + RedirectUri + ";LoginPrompt=" + LoginPrompt;
 
             Service = (IOrganizationService)new CrmServiceClient( connectionString );
         }
