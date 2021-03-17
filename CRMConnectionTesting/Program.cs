@@ -35,8 +35,6 @@ namespace CRMConnectionTesting
 
         public static void Main( string[] args )
         {
-            // TODO: Most of these could be replaced by unit testing, I'm sure of it.
-
             OrganizationServiceProxyConnection MediabardCRMOrganizationServiceProxy = new OrganizationServiceProxyConnection()
             {
                 UserName = DynamicsCRM_Mediabard_TestUserUsername,

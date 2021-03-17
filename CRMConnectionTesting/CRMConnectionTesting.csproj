@@ -135,7 +135,7 @@
   <ItemGroup>
     <Compile Include="CRMConnectionTests.cs" />
     <Compile Include="CRMServiceClientConnection.cs" />
-    <Compile Include="OrganizationServiceConnection.cs" />
+    <Compile Include="OrganizationServiceProxyConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
