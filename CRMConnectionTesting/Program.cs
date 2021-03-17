@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
+
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
@@ -21,8 +21,6 @@ namespace CRMConnectionTesting
 
     public class Program
     {
-        private static IOrganizationService _service;
-
         private const string DynamicsCRM_DiscoveryWebAPI = "https://disco.crm3.dynamics.com/api/discovery/v9.2/";
         private const string DynamicsCRM_OrganizationService = "https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc";
         private const string DynamicsCRM_DiscoveryService = "https://disco.crm3.dynamics.com/XRMServices/2011/Discovery.svc";
@@ -36,10 +34,11 @@ namespace CRMConnectionTesting
 
         public static void Main( string[] args )
         {
-            ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
+            OrganizationServiceConnection MediabardCRM = new OrganizationServiceConnection();
 
-            Guid userid = ( (WhoAmIResponse)_service.Execute( new WhoAmIRequest() ) ).UserId;
-            if( userid != Guid.Empty )
+            MediabardCRM.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
+
+            if( MediabardCRM.Connected )
             {
                 Console.WriteLine( "Connection Established Successfully\n" );
 
@@ -49,7 +48,7 @@ namespace CRMConnectionTesting
                 };
 
                 // Run the query against the CRM
-                var accounts = _service.RetrieveMultiple( accountsQuery ).Entities;
+                var accounts = MediabardCRM.Service.RetrieveMultiple( accountsQuery ).Entities;
 
                 foreach( var account in accounts )
                 {
@@ -65,30 +64,5 @@ namespace CRMConnectionTesting
             while( Console.ReadKey( true ).Key != ConsoleKey.Escape );
         }
 
-        /// <summary>
-        /// Connect the Organization Service to the corresponding organization using the given username and password.
-        /// </summary>
-        private static void ConnectToMSCRM( string UserName, string Password, string SoapOrgServiceUri )
-        {
-            try
-            {
-                ClientCredentials credentials = new ClientCredentials();
-
-                credentials.UserName.UserName = UserName;
-                credentials.UserName.Password = Password;
-
-                Uri serviceUri = new Uri( SoapOrgServiceUri );
-
-                OrganizationServiceProxy proxy = new OrganizationServiceProxy( serviceUri, null, credentials, null );
-                proxy.EnableProxyTypes();
-
-                _service = (IOrganizationService)proxy;
-            }
-            catch( Exception ex )
-            {
-                Console.WriteLine( "Error while connecting to CRM " + ex.Message );
-                Console.ReadKey();
-            }
-        }
     }
 }
