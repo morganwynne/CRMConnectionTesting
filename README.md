@@ -3,7 +3,7 @@
 Console app created with C# and the .NET framework
 
 ## General info
-This project can connect to a Microsoft Dynamics 365 CRM instance using the CRMServiceClient/OAuth method and the OrganizationServiceProxy/Office365 method. To test these connections, it runs a query that captures and prints the name and email of all account rows in the CRM to the command line.
+This project connects to a Microsoft Dynamics 365 CRM instance using the CRMServiceClient/OAuth and OrganizationServiceProxy/Office365 methods. To test these connections, it runs a query that captures and prints the name (name) and email (emailaddress1) of all account rows in the CRM to the command line.
 
 No filtering is done on the account query and it may take a while on larger instances.
 
