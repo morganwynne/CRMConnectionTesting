@@ -13,11 +13,7 @@ using Microsoft.Xrm.Tooling.CrmConnectControl;
 
 namespace CRMConnectionTesting
 {
-    // Library Reference https://docs.microsoft.com/en-us/dotnet/api/?view=dynamics-xrmtooling-ce-9
-    // Build Windows client applications using the XRM tools https://docs.microsoft.com/en-us/powerapps/developer/data-platform/xrm-tooling/build-windows-client-applications-xrm-tools
-    // Sample https://github.com/microsoft/PowerApps-Samples/tree/master/cds/Xrm%20Tooling/Quick%20start%20for%20XRM%20Tooling%20API
-
-    // CRMServiceProxy Connection Method https://arunpotti.com/2014/12/09/connect-to-crm-online-or-on-premise-using-c/
+    // XRM Tooling Library Reference https://docs.microsoft.com/en-us/dotnet/api/?view=dynamics-xrmtooling-ce-9
 
     public class Program
     {

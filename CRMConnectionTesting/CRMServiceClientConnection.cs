@@ -10,6 +10,9 @@ using Microsoft.Crm.Sdk.Messages;
 
 namespace CRMConnectionTesting
 {
+    /// <summary>
+    /// Connects to a Microsoft Dynamics 365 CRM using the CrmServiceClient object and OAuth authentication
+    /// </summary>
     public class CRMServiceClientConnection
     {
         public IOrganizationService Service { get; private set; }

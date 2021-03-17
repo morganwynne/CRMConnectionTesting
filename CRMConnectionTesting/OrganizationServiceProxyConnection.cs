@@ -11,6 +11,10 @@ using Microsoft.Xrm.Sdk.Client;
 
 namespace CRMConnectionTesting
 {
+    /// <summary>
+    /// Connects to a Microsoft Dynamics 365 CRM using the OrganizationServiceProxy object and Office365 authentication
+    /// https://arunpotti.com/2014/12/09/connect-to-crm-online-or-on-premise-using-c/
+    /// </summary>
     public class OrganizationServiceProxyConnection
     {
         public IOrganizationService Service { get; private set; }

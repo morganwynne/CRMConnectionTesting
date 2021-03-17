@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.Xrm.Tooling.Connector.CrmServiceClient;
 
 namespace CRMConnectionTesting
 {
@@ -69,6 +70,5 @@ namespace CRMConnectionTesting
                 Console.WriteLine( "Testing Organization Service Retrieve Failure" );
             }
         }
-
     }
 }
