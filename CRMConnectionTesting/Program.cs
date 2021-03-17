@@ -39,22 +39,7 @@ namespace CRMConnectionTesting
             MediabardCRM.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
             if( MediabardCRM.Connected )
-            {
-                Console.WriteLine( "Connection Established Successfully\n" );
-
-                var accountsQuery = new QueryExpression( "account" )
-                {
-                    ColumnSet = new ColumnSet( true )
-                };
-
-                // Run the query against the CRM
-                var accounts = MediabardCRM.Service.RetrieveMultiple( accountsQuery ).Entities;
-
-                foreach( var account in accounts )
-                {
-                    Console.WriteLine( account.Attributes["name"] + " " + account.Attributes["emailaddress1"] );
-                }
-            }
+                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRM );
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
