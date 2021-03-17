@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
+using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
 using Microsoft.Xrm.Tooling.CrmConnectControl;
 
@@ -39,6 +40,19 @@ namespace CRMConnectionTesting
             if( userid != Guid.Empty )
             {
                 Console.WriteLine( "Connection Established Successfully" );
+
+                var accountsQuery = new QueryExpression( "account" )
+                {
+                    ColumnSet = new ColumnSet( true )
+                };
+
+                // Run the query against the CRM
+                var accounts = _service.RetrieveMultiple( accountsQuery ).Entities;
+                
+                foreach( var account in accounts )
+                {
+                    Console.WriteLine( account.Attributes["name"] + " " + account.Attributes["emailaddress1"] );
+                }
             }
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
@@ -49,6 +63,9 @@ namespace CRMConnectionTesting
             while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
 
+        /// <summary>
+        /// Connect the Organization Service to the corresponding organization using the given username and password.
+        /// </summary>
         public static void ConnectToMSCRM( string UserName, string Password, string SoapOrgServiceUri )
         {
             try
