@@ -30,11 +30,11 @@ namespace CRMConnectionTesting
         private const string DynamicsCRM_Mediabard_InstanceWebAPI = "https://mediabardsandbox.api.crm3.dynamics.com/api/data/v9.2/";
         private const string DynamicsCRM_Mediabard_InstanceReferenceID = "312d3ad4-e79e-49f9-8719-3b98188d3460";
         private const string DynamicsCRM_Mediabard_InstanceReferenceUniqueName = "312d3ad4e79e49f987193b98188d3460";
-        
+
         private const string DynamicsCRM_Mediabard_TestUserUsername = "testuser@mediabard.onmicrosoft.com";
         private const string DynamicsCRM_Mediabard_TestUserPassword = "Thisis1userfortesting";
 
-        public static void Main(string[] args)
+        public static void Main( string[] args )
         {
             ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
@@ -50,7 +50,7 @@ namespace CRMConnectionTesting
 
                 // Run the query against the CRM
                 var accounts = _service.RetrieveMultiple( accountsQuery ).Entities;
-                
+
                 foreach( var account in accounts )
                 {
                     Console.WriteLine( account.Attributes["name"] + " " + account.Attributes["emailaddress1"] );
@@ -59,10 +59,10 @@ namespace CRMConnectionTesting
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
-                while (!Console.KeyAvailable)
+                while( !Console.KeyAvailable )
                 { }
             }
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+            while( Console.ReadKey( true ).Key != ConsoleKey.Escape );
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace CRMConnectionTesting
             try
             {
                 ClientCredentials credentials = new ClientCredentials();
-                
+
                 credentials.UserName.UserName = UserName;
                 credentials.UserName.Password = Password;
 
