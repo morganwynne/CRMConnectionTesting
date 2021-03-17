@@ -25,6 +25,7 @@ namespace CRMConnectionTesting
         private const string DynamicsCRM_OrganizationService = "https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc";
         private const string DynamicsCRM_DiscoveryService = "https://disco.crm3.dynamics.com/XRMServices/2011/Discovery.svc";
 
+        private const string DynamicsCRM_Mediabard_URL = "https://mediabardsandbox.crm3.dynamics.com";
         private const string DynamicsCRM_Mediabard_InstanceWebAPI = "https://mediabardsandbox.api.crm3.dynamics.com/api/data/v9.2/";
         private const string DynamicsCRM_Mediabard_InstanceReferenceID = "312d3ad4-e79e-49f9-8719-3b98188d3460";
         private const string DynamicsCRM_Mediabard_InstanceReferenceUniqueName = "312d3ad4e79e49f987193b98188d3460";
@@ -35,11 +36,17 @@ namespace CRMConnectionTesting
         public static void Main( string[] args )
         {
             // TODO: Switch the username, password, and service to properties and have the ConnectToMSCRM method take no parameters.
-            OrganizationServiceConnection MediabardCRM = new OrganizationServiceConnection();
-            MediabardCRM.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
+            OrganizationServiceConnection MediabardCRMOrganizationService = new OrganizationServiceConnection();
+            MediabardCRMOrganizationService.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_TestUserPassword, DynamicsCRM_OrganizationService );
 
-            if( MediabardCRM.Connected )
-                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRM );
+            if( MediabardCRMOrganizationService.Connected )
+                CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService );
+
+            CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection();
+            MediabardCRMServiceClient.ConnectToMSCRM( DynamicsCRM_Mediabard_TestUserUsername, DynamicsCRM_Mediabard_URL );
+
+            if( MediabardCRMServiceClient.Connected )
+                Console.WriteLine( "CRMServiceClient Successfully Connected" );
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
