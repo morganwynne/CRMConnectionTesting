@@ -4,13 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Crm.Sdk.Messages;
-using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Client;
-using Microsoft.Xrm.Sdk.Query;
-using Microsoft.Xrm.Tooling.Connector;
-using Microsoft.Xrm.Tooling.CrmConnectControl;
-
 namespace CRMConnectionTesting
 {
     // XRM Tooling Library Reference https://docs.microsoft.com/en-us/dotnet/api/?view=dynamics-xrmtooling-ce-9
