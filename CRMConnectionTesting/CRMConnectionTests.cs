@@ -13,7 +13,7 @@ namespace CRMConnectionTesting
         /// <summary>
         /// Tests connecting to the CRM using the OrganizationServiceProxy class and Office365 authentication
         /// </summary>
-        public static void TestOrganizationServiceConnection( OrganizationServiceConnection organizationServiceConnection )
+        public static void TestOrganizationServiceProxyConnection( OrganizationServiceProxyConnection organizationServiceConnection )
         {
             Console.WriteLine( "Creating Organization Service Connection" );
             organizationServiceConnection.ConnectToMSCRM();

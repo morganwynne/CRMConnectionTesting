@@ -11,7 +11,7 @@ using Microsoft.Xrm.Sdk.Client;
 
 namespace CRMConnectionTesting
 {
-    public class OrganizationServiceConnection
+    public class OrganizationServiceProxyConnection
     {
         public IOrganizationService Service { get; private set; }
 
@@ -30,7 +30,7 @@ namespace CRMConnectionTesting
             }
         }
 
-        public OrganizationServiceConnection()
+        public OrganizationServiceProxyConnection()
         {
 
         }

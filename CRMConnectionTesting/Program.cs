@@ -37,14 +37,14 @@ namespace CRMConnectionTesting
         {
             // TODO: Most of these could be replaced by unit testing, I'm sure of it.
 
-            OrganizationServiceConnection MediabardCRMOrganizationService = new OrganizationServiceConnection()
+            OrganizationServiceProxyConnection MediabardCRMOrganizationServiceProxy = new OrganizationServiceProxyConnection()
             {
                 UserName = DynamicsCRM_Mediabard_TestUserUsername,
                 Password = DynamicsCRM_Mediabard_TestUserPassword,
                 SoapOrgServiceUri = DynamicsCRM_OrganizationService
             };
-            CRMConnectionTests.TestOrganizationServiceConnection( MediabardCRMOrganizationService );
-            CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMOrganizationService.Service );
+            CRMConnectionTests.TestOrganizationServiceProxyConnection( MediabardCRMOrganizationServiceProxy );
+            CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMOrganizationServiceProxy.Service );
 
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
             {
