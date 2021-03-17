@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Tooling.Connector;
 using Microsoft.Xrm.Tooling.CrmConnectControl;
 
@@ -20,11 +23,23 @@ namespace CRMConnectionTesting
     // Organization Service: https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc
     // Discovery Service: https://disco.crm3.dynamics.com/XRMServices/2011/Discovery.svc
 
-    class Program
+    // CRMServiceProxy Connection Method https://arunpotti.com/2014/12/09/connect-to-crm-online-or-on-premise-using-c/
+
+    public class Program
     {
+        static IOrganizationService _service;
+
         static void Main(string[] args)
         {
             Console.WriteLine("hello, World!");
+
+            ConnectToMSCRM( "testuser@mediabard.onmicrosoft.com", "Thisis1userfortesting", "https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc" );
+
+            Guid userid = ( (WhoAmIResponse)_service.Execute( new WhoAmIRequest() ) ).UserId;
+            if( userid != Guid.Empty )
+            {
+                Console.WriteLine( "Connection Established Successfully" );
+            }
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
@@ -32,6 +47,29 @@ namespace CRMConnectionTesting
                 { }
             }
             while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+        }
+
+        public static void ConnectToMSCRM( string UserName, string Password, string SoapOrgServiceUri )
+        {
+            try
+            {
+                ClientCredentials credentials = new ClientCredentials();
+                
+                credentials.UserName.UserName = UserName;
+                credentials.UserName.Password = Password;
+
+                Uri serviceUri = new Uri( SoapOrgServiceUri );
+
+                OrganizationServiceProxy proxy = new OrganizationServiceProxy( serviceUri, null, credentials, null );
+                proxy.EnableProxyTypes();
+
+                _service = (IOrganizationService)proxy;
+            }
+            catch( Exception ex )
+            {
+                Console.WriteLine( "Error while connecting to CRM " + ex.Message );
+                Console.ReadKey();
+            }
         }
     }
 }
