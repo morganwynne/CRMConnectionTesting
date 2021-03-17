@@ -1,4 +1,5 @@
-﻿using Microsoft.Xrm.Sdk.Query;
+﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace CRMConnectionTesting
 {
     public static class CRMConnectionTests
     {
-        public static bool TestOrganizationServiceConnection( OrganizationServiceConnection organizationServiceConnection )
+        public static bool TestOrganizationServiceConnection( IOrganizationService organizationService )
         {
             try
             {
@@ -19,7 +20,7 @@ namespace CRMConnectionTesting
                 };
 
                 // Run the query against the CRM
-                var accounts = organizationServiceConnection.Service.RetrieveMultiple( accountsQuery ).Entities;
+                var accounts = organizationService.RetrieveMultiple( accountsQuery ).Entities;
 
                 foreach( var account in accounts )
                 {
