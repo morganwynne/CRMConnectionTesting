@@ -45,7 +45,7 @@ namespace CRMConnectionTesting
         public bool Connected {
             get
             {
-                bool connected = ( (WhoAmIResponse)Service.Execute( new WhoAmIRequest() ) ).UserId != null;
+                bool connected = ( Service != null ) && ( ( (WhoAmIResponse)Service.Execute( new WhoAmIRequest() ) ).UserId != null );
                 return connected;
             }
         }

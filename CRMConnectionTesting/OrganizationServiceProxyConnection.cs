@@ -29,7 +29,7 @@ namespace CRMConnectionTesting
             {
                 // TODO: Seems like a weird way to test the connection. Research alternatives later.
 
-                bool connected = ( (WhoAmIResponse)Service.Execute( new WhoAmIRequest() ) ).UserId != null;
+                bool connected = ( Service != null ) && ( ( (WhoAmIResponse)Service.Execute( new WhoAmIRequest() ) ).UserId != null );
                 return connected;
             }
         }
@@ -44,25 +44,17 @@ namespace CRMConnectionTesting
         /// </summary>
         public void ConnectToMSCRM()
         {
-            try
-            {
-                ClientCredentials credentials = new ClientCredentials();
+            ClientCredentials credentials = new ClientCredentials();
 
-                credentials.UserName.UserName = UserName;
-                credentials.UserName.Password = Password;
+            credentials.UserName.UserName = UserName;
+            credentials.UserName.Password = Password;
 
-                Uri serviceUri = new Uri( SoapOrgServiceUri );
+            Uri serviceUri = new Uri( SoapOrgServiceUri );
 
-                OrganizationServiceProxy proxy = new OrganizationServiceProxy( serviceUri, null, credentials, null );
-                proxy.EnableProxyTypes();
+            OrganizationServiceProxy proxy = new OrganizationServiceProxy( serviceUri, null, credentials, null );
+            proxy.EnableProxyTypes();
 
-                Service = (IOrganizationService)proxy;
-            }
-            catch( Exception ex )
-            {
-                Console.WriteLine( "Error while connecting to CRM " + ex.Message );
-                Console.ReadKey();
-            }
+            Service = (IOrganizationService)proxy;
         }
     }
 }

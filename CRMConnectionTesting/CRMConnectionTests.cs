@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using System;
 
 namespace CRMConnectionTesting
 {
@@ -18,12 +13,21 @@ namespace CRMConnectionTesting
         public static void TestOrganizationServiceProxyConnection( OrganizationServiceProxyConnection organizationServiceConnection )
         {
             Console.WriteLine( "Creating Organization Service Proxy Connection" );
-            organizationServiceConnection.ConnectToMSCRM();
 
-            if( organizationServiceConnection.Connected )
-                Console.WriteLine( "Creation Organization Service Proxy Successful" );
-            else
+            try
+            {
+                organizationServiceConnection.ConnectToMSCRM();
+
+                if( organizationServiceConnection.Connected )
+                    Console.WriteLine( "Creation Organization Service Proxy Successful" );
+                else
+                    Console.WriteLine( "Creating Organization Service Proxy Failure" );
+            }
+            catch( Exception ex )
+            {
+                Console.WriteLine( ex.Message );
                 Console.WriteLine( "Creating Organization Service Proxy Failure" );
+            }
         }
         
         /// <summary>
@@ -32,12 +36,21 @@ namespace CRMConnectionTesting
         public static void TestCRMServiceClientConnection( CRMServiceClientConnection cRMServiceClientConnection )
         {
             Console.WriteLine( "Creating CRM Service Client Connection" );
-            cRMServiceClientConnection.ConnectToMSCRM();
 
-            if( cRMServiceClientConnection.Connected )
-                Console.WriteLine( "Creating CRM Service Client Connection Successful" );
-            else
+            try
+            {
+                cRMServiceClientConnection.ConnectToMSCRM();
+
+                if( cRMServiceClientConnection.Connected )
+                    Console.WriteLine( "Creating CRM Service Client Connection Successful" );
+                else
+                    Console.WriteLine( "Creating CRM Service Client Connection Failure" );
+            }
+            catch( Exception ex )
+            {
+                Console.WriteLine( ex.Message );
                 Console.WriteLine( "Creating CRM Service Client Connection Failure" );
+            }
         }
 
         /// <summary>
@@ -45,9 +58,17 @@ namespace CRMConnectionTesting
         /// </summary>
         public static void TestOrganizationServiceRetrieve( IOrganizationService organizationService )
         {
+            Console.WriteLine( "Testing Organization Service Retrieve" );
+
+            // NullReferenceExceptions will stop debugging by default so I threw this one in here as extra
+            if( organizationService == null )
+            {
+                Console.WriteLine( "Testing Organization Service Retrieve Failure" );
+                return;
+            }
+
             try
             {
-                Console.WriteLine( "Testing Organization Service Retrieve" );
                 var accountsQuery = new QueryExpression( "account" )
                 {
                     ColumnSet = new ColumnSet( true )
@@ -63,7 +84,7 @@ namespace CRMConnectionTesting
 
                 Console.WriteLine( "Testing Organization Service Retrieve Successful" );
             }
-            catch( Exception ex )
+            catch( NullReferenceException ex )
             {
                 Console.WriteLine( ex.Message );
                 Console.WriteLine( "Testing Organization Service Retrieve Failure" );
