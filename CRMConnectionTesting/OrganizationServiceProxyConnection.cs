@@ -56,5 +56,18 @@ namespace CRMConnectionTesting
 
             Service = (IOrganizationService)proxy;
         }
+
+        public void UpdateRecordState( string entity, Guid id, int stateCode, int statusCode )
+        {
+            var request = new SetStateRequest();
+
+            // TODO: Update these
+            request.State = new OptionSetValue( stateCode );
+            request.Status = new OptionSetValue( statusCode );
+
+            request.EntityMoniker = new EntityReference( entity, id );
+
+            SetStateResponse res = (SetStateResponse)Service.Execute( request );
+        }
     }
 }

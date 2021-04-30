@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Crm.Sdk.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -27,7 +28,7 @@ namespace CRMConnectionTesting
 
             if( Connection.Connected )
             {
-                
+                Connection.UpdateRecordState( "opportunity", new Guid( "6634f32e-4be5-e511-80fe-00155d09ab01" ), 1, 3 );
             }
             else
             {
