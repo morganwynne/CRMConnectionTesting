@@ -12,6 +12,23 @@ namespace CRMConnectionTesting
     {
         public static void Main( string[] args )
         {
+            var Connection = new OrganizationServiceProxyConnection()
+            {
+                UserName = properties.GetString( "Dynamics_Instance_TestUserUsername" ),
+                Password = properties.GetString( "Resources.Dynamics_Instance_TestUserPassword" ),
+                SoapOrgServiceUri = properties.GetString( "Resources.Dynamics_OrganizationService" )
+            };
+
+            Connection.ConnectToMSCRM();
+
+            if( Connection.Connected )
+            {
+                
+            }
+            else
+            {
+                Console.WriteLine( "Connection failed" );
+            }
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
