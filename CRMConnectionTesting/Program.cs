@@ -15,9 +15,9 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Test 1: Connecting Using Service Proxy and Office365 Authentication" );
             OrganizationServiceProxyConnection MediabardCRMOrganizationServiceProxy = new OrganizationServiceProxyConnection()
             {
-                UserName = Properties.Resources.DynamicsCRM_Mediabard_TestUserUsername,
-                Password = Properties.Resources.DynamicsCRM_Mediabard_TestUserPassword,
-                SoapOrgServiceUri = Properties.Resources.DynamicsCRM_OrganizationService
+                UserName = Properties.Resources.Dynamics_Mediabard_TestUserUsername,
+                Password = Properties.Resources.Dynamics_Mediabard_TestUserPassword,
+                SoapOrgServiceUri = Properties.Resources.Dynamics_OrganizationService
             };
             CRMConnectionTests.TestOrganizationServiceProxyConnection( MediabardCRMOrganizationServiceProxy );
             CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMOrganizationServiceProxy.Service );
@@ -26,8 +26,8 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Test 2: Connecting using CRM Service Client and OAuth Authentication" );
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
             {
-                UserName = Properties.Resources.DynamicsCRM_Mediabard_TestUserUsername,
-                Url = Properties.Resources.DynamicsCRM_Mediabard_URL
+                UserName = Properties.Resources.Dynamics_Mediabard_TestUserUsername,
+                Url = Properties.Resources.Dynamics_Mediabard_URL
             };
             CRMConnectionTests.TestCRMServiceClientConnection( MediabardCRMServiceClient );
             CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMServiceClient.Service );

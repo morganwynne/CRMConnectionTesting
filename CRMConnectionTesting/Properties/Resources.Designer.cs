@@ -63,81 +63,81 @@ namespace CRMConnectionTesting.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://disco.crm3.dynamics.com/XRMServices/2011/Discovery.svc.
         /// </summary>
-        internal static string DynamicsCRM_DiscoveryService {
+        internal static string Dynamics_DiscoveryService {
             get {
-                return ResourceManager.GetString("DynamicsCRM_DiscoveryService", resourceCulture);
+                return ResourceManager.GetString("Dynamics_DiscoveryService", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://disco.crm3.dynamics.com/api/discovery/v9.2/.
         /// </summary>
-        internal static string DynamicsCRM_DiscoveryWebAPI {
+        internal static string Dynamics_DiscoveryWebAPI {
             get {
-                return ResourceManager.GetString("DynamicsCRM_DiscoveryWebAPI", resourceCulture);
+                return ResourceManager.GetString("Dynamics_DiscoveryWebAPI", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 312d3ad4-e79e-49f9-8719-3b98188d3460.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_InstanceReferenceID {
+        internal static string Dynamics_Mediabard_InstanceReferenceID {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_InstanceReferenceID", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_InstanceReferenceID", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 312d3ad4e79e49f987193b98188d3460.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_InstanceReferenceUniqueName {
+        internal static string Dynamics_Mediabard_InstanceReferenceUniqueName {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_InstanceReferenceUniqueName", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_InstanceReferenceUniqueName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://mediabardsandbox.api.crm3.dynamics.com/api/data/v9.2/.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_InstanceWebAPI {
+        internal static string Dynamics_Mediabard_InstanceWebAPI {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_InstanceWebAPI", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_InstanceWebAPI", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thisis1userfortesting.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_TestUserPassword {
+        internal static string Dynamics_Mediabard_TestUserPassword {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_TestUserPassword", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_TestUserPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to testuser@mediabard.onmicrosoft.com.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_TestUserUsername {
+        internal static string Dynamics_Mediabard_TestUserUsername {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_TestUserUsername", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_TestUserUsername", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://mediabardsandbox.crm3.dynamics.com.
         /// </summary>
-        internal static string DynamicsCRM_Mediabard_URL {
+        internal static string Dynamics_Mediabard_URL {
             get {
-                return ResourceManager.GetString("DynamicsCRM_Mediabard_URL", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Mediabard_URL", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://mediabardsandbox.api.crm3.dynamics.com/XRMServices/2011/Organization.svc.
         /// </summary>
-        internal static string DynamicsCRM_OrganizationService {
+        internal static string Dynamics_OrganizationService {
             get {
-                return ResourceManager.GetString("DynamicsCRM_OrganizationService", resourceCulture);
+                return ResourceManager.GetString("Dynamics_OrganizationService", resourceCulture);
             }
         }
     }
