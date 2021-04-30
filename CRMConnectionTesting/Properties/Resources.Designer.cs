@@ -81,54 +81,54 @@ namespace CRMConnectionTesting.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 312d3ad4-e79e-49f9-8719-3b98188d3460.
         /// </summary>
-        internal static string Dynamics_Mediabard_InstanceReferenceID {
+        internal static string Dynamics_Instance_ReferenceID {
             get {
-                return ResourceManager.GetString("Dynamics_Mediabard_InstanceReferenceID", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Instance_ReferenceID", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 312d3ad4e79e49f987193b98188d3460.
         /// </summary>
-        internal static string Dynamics_Mediabard_InstanceReferenceUniqueName {
+        internal static string Dynamics_Instance_ReferenceUniqueName {
             get {
-                return ResourceManager.GetString("Dynamics_Mediabard_InstanceReferenceUniqueName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://mediabardsandbox.api.crm3.dynamics.com/api/data/v9.2/.
-        /// </summary>
-        internal static string Dynamics_Mediabard_InstanceWebAPI {
-            get {
-                return ResourceManager.GetString("Dynamics_Mediabard_InstanceWebAPI", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Instance_ReferenceUniqueName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Thisis1userfortesting.
         /// </summary>
-        internal static string Dynamics_Mediabard_TestUserPassword {
+        internal static string Dynamics_Instance_TestUserPassword {
             get {
-                return ResourceManager.GetString("Dynamics_Mediabard_TestUserPassword", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Instance_TestUserPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to testuser@mediabard.onmicrosoft.com.
         /// </summary>
-        internal static string Dynamics_Mediabard_TestUserUsername {
+        internal static string Dynamics_Instance_TestUserUsername {
             get {
-                return ResourceManager.GetString("Dynamics_Mediabard_TestUserUsername", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Instance_TestUserUsername", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://mediabardsandbox.crm3.dynamics.com.
         /// </summary>
-        internal static string Dynamics_Mediabard_URL {
+        internal static string Dynamics_Instance_URL {
             get {
-                return ResourceManager.GetString("Dynamics_Mediabard_URL", resourceCulture);
+                return ResourceManager.GetString("Dynamics_Instance_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://mediabardsandbox.api.crm3.dynamics.com/api/data/v9.2/.
+        /// </summary>
+        internal static string Dynamics_Instance_WebAPI {
+            get {
+                return ResourceManager.GetString("Dynamics_Instance_WebAPI", resourceCulture);
             }
         }
         

@@ -12,7 +12,6 @@ namespace CRMConnectionTesting
     {
         public static void Main( string[] args )
         {
-            ConnectionTesting();
 
             do // https://stackoverflow.com/questions/5891538/listen-for-key-press-in-net-console-app
             {
@@ -27,8 +26,8 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Connection Test 1: Connecting Using Service Proxy and Office365 Authentication" );
             OrganizationServiceProxyConnection MediabardCRMOrganizationServiceProxy = new OrganizationServiceProxyConnection()
             {
-                UserName = Properties.Resources.Dynamics_Mediabard_TestUserUsername,
-                Password = Properties.Resources.Dynamics_Mediabard_TestUserPassword,
+                UserName = Properties.Resources.Dynamics_Instance_TestUserUsername,
+                Password = Properties.Resources.Dynamics_Instance_TestUserPassword,
                 SoapOrgServiceUri = Properties.Resources.Dynamics_OrganizationService
             };
             CRMConnectionTests.TestOrganizationServiceProxyConnection( MediabardCRMOrganizationServiceProxy );
@@ -38,8 +37,8 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Connection Test 2: Connecting using CRM Service Client and OAuth Authentication" );
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
             {
-                UserName = Properties.Resources.Dynamics_Mediabard_TestUserUsername,
-                Url = Properties.Resources.Dynamics_Mediabard_URL
+                UserName = Properties.Resources.Dynamics_Instance_TestUserUsername,
+                Url = Properties.Resources.Dynamics_Instance_URL
             };
             CRMConnectionTests.TestCRMServiceClientConnection( MediabardCRMServiceClient );
             CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMServiceClient.Service );
