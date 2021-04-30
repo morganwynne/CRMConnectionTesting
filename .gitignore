@@ -11,7 +11,7 @@
 *.sln.docstates
 
 *.resx
-Resources.Designer.cs
+CRMConnectionTesting/Properties/Resources.Designer.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
