@@ -19,8 +19,8 @@ namespace CRMConnectionTesting
             var Connection = new OrganizationServiceProxyConnection()
             {
                 UserName = properties.GetString( "Dynamics_Instance_TestUserUsername" ),
-                Password = properties.GetString( "Resources.Dynamics_Instance_TestUserPassword" ),
-                SoapOrgServiceUri = properties.GetString( "Resources.Dynamics_OrganizationService" )
+                Password = properties.GetString( "Dynamics_Instance_TestUserPassword" ),
+                SoapOrgServiceUri = properties.GetString( "Dynamics_OrganizationService" )
             };
 
             Connection.ConnectToMSCRM();
