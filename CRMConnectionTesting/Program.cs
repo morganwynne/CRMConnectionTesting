@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,8 @@ namespace CRMConnectionTesting
 
     public class Program
     {
+        private static ResourceManager properties = new ResourceManager( "CRMConnectionTesting.Properties.Resources", Assembly.GetExecutingAssembly() );
+
         public static void Main( string[] args )
         {
             var Connection = new OrganizationServiceProxyConnection()
@@ -43,9 +47,9 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Connection Test 1: Connecting Using Service Proxy and Office365 Authentication" );
             OrganizationServiceProxyConnection MediabardCRMOrganizationServiceProxy = new OrganizationServiceProxyConnection()
             {
-                UserName = Properties.Resources.Dynamics_Instance_TestUserUsername,
-                Password = Properties.Resources.Dynamics_Instance_TestUserPassword,
-                SoapOrgServiceUri = Properties.Resources.Dynamics_OrganizationService
+                UserName = properties.GetString( "Dynamics_Instance_TestUserUsername" ),
+                Password = properties.GetString( "Dynamics_Instance_TestUserPassword" ),
+                SoapOrgServiceUri = properties.GetString( "Dynamics_OrganizationService" )
             };
             CRMConnectionTests.TestOrganizationServiceProxyConnection( MediabardCRMOrganizationServiceProxy );
             CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMOrganizationServiceProxy.Service );
@@ -54,8 +58,8 @@ namespace CRMConnectionTesting
             Console.WriteLine( "Connection Test 2: Connecting using CRM Service Client and OAuth Authentication" );
             CRMServiceClientConnection MediabardCRMServiceClient = new CRMServiceClientConnection()
             {
-                UserName = Properties.Resources.Dynamics_Instance_TestUserUsername,
-                Url = Properties.Resources.Dynamics_Instance_URL
+                UserName = properties.GetString( "Dynamics_Instance_TestUserUsername" ),
+                Url = properties.GetString( "Dynamics_Instance_URL" )
             };
             CRMConnectionTests.TestCRMServiceClientConnection( MediabardCRMServiceClient );
             CRMConnectionTests.TestOrganizationServiceRetrieve( MediabardCRMServiceClient.Service );
